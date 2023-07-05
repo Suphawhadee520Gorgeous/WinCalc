@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinCalc
@@ -74,10 +67,18 @@ namespace WinCalc
         {
             this.number1 = this.number2 = this.answer = "0";
             this.txtDisplay.Text = "0";
+            this.symbol.Text = "0";
+            this.doStatus  = false;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if (this.txtDisplay.Text.Length > 0)
+                this.txtDisplay.Text =
+                    this.txtDisplay.Text.Remove(this.txtDisplay.Text.Length - 1);
+
+            if ((this.txtDisplay.Text.Length == 0) || (this.txtDisplay.Text == ""))
+            this.txtDisplay.Text += "0";
 
         }
 
@@ -119,6 +120,22 @@ namespace WinCalc
         private void btnSeven_Click(object sender, EventArgs e)
         {
             this.AddToDisplay("7");
+        }
+
+        private void mnuClearItem_Click(object sender, EventArgs e)
+        {
+            this.btnClear_Click(sender, e);
+        }
+
+        private void mnuExitItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); //this.Close();
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            frmAbout objAbout = new frmAbout();
+            objAbout.ShowDialog();
         }
 
         private void btnEighty_Click(object sender, EventArgs e)
