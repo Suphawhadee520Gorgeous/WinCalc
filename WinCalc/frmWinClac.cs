@@ -35,7 +35,7 @@ namespace WinCalc
             double numSecond = double.Parse(num2);
             double numAnswer = 0.0f;
 
-            switch (this.symbol) 
+            switch (_symbol) 
             {
             case '+': numAnswer = numFirst + numSecond; break;
             case '-': numAnswer = numFirst - numSecond; break;
